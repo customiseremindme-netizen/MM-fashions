@@ -110,16 +110,23 @@ export function CustomCursor() {
   const size = view ? 84 : state === "cta" ? 40 : 14;
 
   return (
-    <div ref={ref} aria-hidden className="pointer-events-none fixed top-0 left-0 z-[100]" style={{ transform: "translate3d(-100px,-100px,0)" }}>
+    // Difference blending sits on the outer fixed element: it forms its own
+    // stacking context, so it is the one that can blend with the page behind
+    // it. That turns the white circle dark on light backgrounds and light on
+    // dark ones. The VIEW disc switches blending off to stay solid ink.
+    <div
+      ref={ref}
+      aria-hidden
+      className="pointer-events-none fixed top-0 left-0 z-[100]"
+      style={{ transform: "translate3d(-100px,-100px,0)", mixBlendMode: view ? "normal" : "difference" }}
+    >
       <div
         className="grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full transition-[width,height,opacity,background-color] duration-300 ease-premium"
         style={{
           width: size,
           height: size,
           opacity: state === "hidden" ? 0 : 1,
-          // Difference blending keeps the small circle visible on white, ink and red alike.
           backgroundColor: view ? "var(--color-ink)" : "#fff",
-          mixBlendMode: view ? "normal" : "difference",
         }}
       >
         <span
