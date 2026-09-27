@@ -1,0 +1,185 @@
+{
+  "about.jpg": {
+    "width": 992,
+    "height": 1056,
+    "widths": [
+      480,
+      800,
+      992
+    ]
+  },
+  "boy1.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1024
+    ]
+  },
+  "boy2.jpg": {
+    "width": 864,
+    "height": 1184,
+    "widths": [
+      480,
+      800
+    ]
+  },
+  "boy3.jpg": {
+    "width": 864,
+    "height": 1184,
+    "widths": [
+      480,
+      800
+    ]
+  },
+  "boy4.jpg": {
+    "width": 954,
+    "height": 1318,
+    "widths": [
+      480,
+      800,
+      954
+    ]
+  },
+  "dig1.jpg": {
+    "width": 1152,
+    "height": 896,
+    "widths": [
+      480,
+      800,
+      1152
+    ]
+  },
+  "dig2.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1024
+    ]
+  },
+  "dig3.jpg": {
+    "width": 1344,
+    "height": 768,
+    "widths": [
+      480,
+      800,
+      1200,
+      1344
+    ]
+  },
+  "dig4.jpg": {
+    "width": 864,
+    "height": 1184,
+    "widths": [
+      480,
+      800
+    ]
+  },
+  "girl1.jpg": {
+    "width": 1024,
+    "height": 1024,
+    "widths": [
+      480,
+      800,
+      1024
+    ]
+  },
+  "girl2.jpg": {
+    "width": 853,
+    "height": 1280,
+    "widths": [
+      480,
+      800
+    ]
+  },
+  "girl3.jpg": {
+    "width": 1920,
+    "height": 1072,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "girl4.jpg": {
+    "width": 1599,
+    "height": 893,
+    "widths": [
+      480,
+      800,
+      1200,
+      1599
+    ]
+  },
+  "hero_polos.png": {
+    "width": 1146,
+    "height": 1227,
+    "widths": [
+      400,
+      640,
+      960,
+      1146
+    ]
+  },
+  "hero_sew.jpg": {
+    "width": 1920,
+    "height": 1282,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      1920
+    ]
+  },
+  "infra.jpg": {
+    "width": 1280,
+    "height": 800,
+    "widths": [
+      480,
+      800,
+      1200
+    ]
+  },
+  "kg1.jpg": {
+    "width": 1072,
+    "height": 1290,
+    "widths": [
+      480,
+      800,
+      1072
+    ]
+  },
+  "kg2.jpg": {
+    "width": 1080,
+    "height": 1300,
+    "widths": [
+      480,
+      800,
+      1080
+    ]
+  },
+  "kg3.jpg": {
+    "width": 1080,
+    "height": 1300,
+    "widths": [
+      480,
+      800,
+      1080
+    ]
+  },
+  "kg4.jpg": {
+    "width": 1088,
+    "height": 960,
+    "widths": [
+      480,
+      800,
+      1088
+    ]
+  }
+}
