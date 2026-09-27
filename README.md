@@ -79,6 +79,12 @@ Upload `dist/` to any static host. Serve unknown paths with `404.html` (most hos
 
 The canonical domain is set in `src/config/site.ts` (`https://www.mmfashions.in`).
 
+## Light and dark mode
+
+The sun/moon button in the header switches themes. Until a visitor chooses, the site follows their device setting; a choice is saved in `localStorage` (`mm-fashions:theme`). A tiny inline script in `index.html` applies the theme before the first paint, so there is no flash of the wrong theme.
+
+Colours that change between themes are CSS variables in `src/index.css` (`surface`, `fg`, `accent`, `red-fg`, plus `chalk`, `body`, `muted`, `line` and the ink tones), redefined under `:root[data-theme="dark"]`. Product photos always sit on white, and the logo sits on a white plate in dark mode because the supplied file has black lettering on a transparent background. Both themes pass an automated WCAG AA contrast check.
+
 ## Accessibility and motion
 
 One H1 per page, landmarks, alt text on every image (models read "Model 057, Cut & sew polos"), visible focus rings, 44px minimum tap targets, keyboard-operable menu, accordion and lightbox (arrow keys, Escape). With `prefers-reduced-motion`, all animation is switched off and content shows in its final state. The custom cursor only runs on desktop with a mouse.

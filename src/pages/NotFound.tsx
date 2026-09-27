@@ -13,7 +13,7 @@ export default function NotFoundPage() {
         <span
           aria-hidden
           data-num="404"
-          className="pointer-events-none absolute -right-6 -bottom-10 -z-10 text-[180px] leading-none font-extrabold tracking-tighter text-ink/[0.05] select-none before:content-[attr(data-num)] sm:text-[280px] lg:-bottom-16 lg:text-[380px]"
+          className="pointer-events-none absolute -right-6 -bottom-10 -z-10 text-[180px] leading-none font-extrabold tracking-tighter text-fg/[0.05] select-none before:content-[attr(data-num)] sm:text-[280px] lg:-bottom-16 lg:text-[380px]"
         />
         <div className="container-page flex min-h-[62vh] flex-col justify-center py-20 sm:py-24">
           <span aria-hidden className="mb-6 block h-1 w-12 rounded-full bg-red" />

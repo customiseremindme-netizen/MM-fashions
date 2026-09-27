@@ -10,10 +10,10 @@ import { whoWeServe } from "@/content/shared";
 export function Intro() {
   const { intro } = home;
   return (
-    <section className="section-y bg-white" aria-labelledby="intro-title">
+    <section className="section-y bg-surface" aria-labelledby="intro-title">
       <div className="container-page grid gap-12 lg:grid-cols-[42fr_58fr] lg:gap-16 xl:gap-20">
         <Reveal className="lg:pt-2">
-          <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-teal" />
+          <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-accent" />
           <h2 id="intro-title" className="text-h2 max-w-[16ch]">
             {intro.title}
           </h2>
@@ -34,8 +34,8 @@ export function Intro() {
 
         <div>
           <Reveal>
-            <h3 className="mb-5 flex items-center gap-3 text-sm font-semibold tracking-wide text-teal">
-              <span aria-hidden className="h-px w-8 bg-teal" />
+            <h3 className="mb-5 flex items-center gap-3 text-sm font-semibold tracking-wide text-accent">
+              <span aria-hidden className="h-px w-8 bg-accent" />
               {whoWeServe.title}
             </h3>
           </Reveal>

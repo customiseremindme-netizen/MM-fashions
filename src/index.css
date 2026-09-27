@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* Dark mode follows <html data-theme="dark">, set before first paint by the
+   inline script in index.html (system preference unless the visitor chose). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* Poppins, self-hosted (latin subset). 400/600/800 are preloaded in index.html. */
 @font-face {
   font-family: "Poppins";
@@ -64,6 +68,12 @@
   --color-muted: #5f6671;
   --color-line: #e1e5e4;
   --color-whatsapp: #1fa855;
+
+  /* Semantic colours: these swap in dark mode (see :root[data-theme="dark"]). */
+  --color-surface: #ffffff; /* page and card background */
+  --color-fg: #1c1f26; /* headings and strong text on surfaces */
+  --color-accent: #2a6f6b; /* teal accents on surfaces */
+  --color-red-fg: #d2232a; /* red used as small text */
   --color-whatsapp-hover: #2bbd63;
 
   --font-sans: "Poppins", "Poppins Fallback", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial,
@@ -182,6 +192,30 @@
       opacity: 0;
     }
   }
+}
+
+/* ---------- Dark theme ---------- */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-surface: #121418;
+  --color-chalk: #181b21;
+  --color-fg: #eef0f2;
+  --color-body: #c5cad2;
+  --color-muted: #9aa1ac;
+  --color-line: #2a2e36;
+  --color-accent: #4fa39d;
+  --color-red-fg: #ff5a5f;
+  /* The always-dark sections go deeper so they still stand apart. */
+  --color-ink: #0b0c0f;
+  --color-ink-soft: #16181d;
+  --color-ink-deep: #060709;
+}
+
+/* Cross-fade when the theme is switched (browsers with view transitions). */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.35s;
 }
 
 /* ---------- Layout and type scale ---------- */
@@ -315,7 +349,7 @@
   }
 
   body {
-    @apply bg-white font-sans text-body text-copy;
+    @apply bg-surface font-sans text-body text-copy;
     min-width: 320px;
     overflow-x: clip;
   }
@@ -324,7 +358,7 @@
   h2,
   h3,
   h4 {
-    color: var(--color-ink);
+    color: var(--color-fg);
     text-wrap: balance;
   }
 
@@ -338,7 +372,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-teal);
+    outline: 2px solid var(--color-accent);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -347,7 +381,7 @@
     outline-color: var(--color-teal-light);
   }
   .on-dark .on-light :focus-visible {
-    outline-color: var(--color-teal);
+    outline-color: var(--color-accent);
   }
 
   img {

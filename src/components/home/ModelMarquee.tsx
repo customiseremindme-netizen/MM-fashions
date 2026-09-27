@@ -46,7 +46,7 @@ function Row({ items, reverse }: { items: Model[]; reverse?: boolean }) {
 export function ModelMarquee() {
   const { marquee } = home;
   return (
-    <section className="section-y overflow-hidden bg-white" aria-labelledby="marquee-title">
+    <section className="section-y overflow-hidden bg-surface" aria-labelledby="marquee-title">
       <div className="container-page">
         <SectionHeader id="marquee-title" align="center" title={marquee.title} intro={marquee.intro} />
       </div>

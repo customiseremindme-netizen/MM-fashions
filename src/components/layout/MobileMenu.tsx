@@ -35,7 +35,7 @@ export function MobileMenu({ open, onOpenChange }: MobileMenuProps) {
         onClick={() => onOpenChange(true)}
         onPointerEnter={() => void loadPanel()}
         onFocus={() => void loadPanel()}
-        className="grid size-11 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink lg:hidden"
+        className="grid size-11 place-items-center rounded-full border border-line text-fg transition-colors hover:border-fg lg:hidden"
       >
         <Menu className="size-5" strokeWidth={2} />
       </button>

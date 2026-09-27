@@ -101,7 +101,7 @@ export function Lightbox({ list, index, onIndexChange, onClose, isSelected, onTo
             <div className="pointer-events-none fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
               <Dialog.Content forceMount asChild onKeyDown={onKeyDown} aria-describedby="lightbox-range">
                 <m.div
-                  className="pointer-events-auto relative grid max-h-full w-full max-w-[1040px] overflow-y-auto rounded-card bg-white shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)] lg:grid-cols-[minmax(0,1fr)_340px] lg:overflow-hidden"
+                  className="pointer-events-auto relative grid max-h-full w-full max-w-[1040px] overflow-y-auto rounded-card bg-surface shadow-[0_40px_120px_-40px_rgba(0,0,0,0.8)] lg:grid-cols-[minmax(0,1fr)_340px] lg:overflow-hidden"
                   initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={reduce ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
@@ -164,7 +164,7 @@ export function Lightbox({ list, index, onIndexChange, onClose, isSelected, onTo
                       {index + 1} / {list.length}
                     </p>
                     <Dialog.Title className="text-h2 mt-1 lg:mt-4">{modelLabel(model)}</Dialog.Title>
-                    <p id="lightbox-range" className="mt-2 text-[15px] font-medium text-teal">
+                    <p id="lightbox-range" className="mt-2 text-[15px] font-medium text-accent">
                       {getRangeName(model.range)}
                     </p>
                     <p className="mt-5 hidden text-[15px] leading-relaxed text-muted lg:block">{catalogue.hint}</p>
@@ -175,7 +175,7 @@ export function Lightbox({ list, index, onIndexChange, onClose, isSelected, onTo
                         variant={selected ? "outline" : "primary"}
                         onClick={() => onToggle(model.no)}
                         aria-pressed={selected}
-                        className={cn(selected && "border-red text-red hover:border-red hover:bg-red hover:text-white")}
+                        className={cn(selected && "border-red text-red-fg hover:border-red hover:bg-red hover:text-white")}
                       >
                         {selected ? <Check className="size-[18px]" strokeWidth={2.5} /> : <Plus className="size-[18px]" strokeWidth={2.25} />}
                         {selected ? catalogue.shortlist.remove : catalogue.shortlist.add}
@@ -186,7 +186,7 @@ export function Lightbox({ list, index, onIndexChange, onClose, isSelected, onTo
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex min-h-11 items-center justify-center gap-2 text-sm font-semibold text-ink transition-colors hover:text-teal"
+                        className="inline-flex min-h-11 items-center justify-center gap-2 text-sm font-semibold text-fg transition-colors hover:text-accent"
                       >
                         <WhatsAppIcon className="size-4 text-whatsapp" />
                         {catalogue.lightbox.ask}

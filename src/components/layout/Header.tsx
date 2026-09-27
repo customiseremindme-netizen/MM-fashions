@@ -7,6 +7,7 @@ import { nav, site } from "@/config/site";
 import { useScrolled } from "@/hooks/useScrolled";
 import { cn } from "@/lib/utils";
 import { MobileMenu } from "./MobileMenu";
+import { ThemeToggle } from "./ThemeToggle";
 
 /**
  * Sticky white header: 76px, shrinking to 64px with a hairline and soft shadow
@@ -25,14 +26,19 @@ export function Header() {
       <div aria-hidden className="h-[76px]" />
       <header
         className={cn(
-          "fixed inset-x-0 top-0 z-40 border-b bg-white transition-[height,box-shadow,border-color] duration-500 ease-premium",
+          "fixed inset-x-0 top-0 z-40 border-b bg-surface transition-[height,box-shadow,border-color] duration-500 ease-premium",
           scrolled
             ? "h-16 border-line shadow-[0_10px_30px_-20px_rgba(28,31,38,0.35)]"
             : "h-[76px] border-transparent",
         )}
       >
         <div className="container-page flex h-full items-center gap-4">
-          <Link to="/" aria-label="M.M Fashions, home" className="-ml-1 shrink-0 rounded-md p-1" data-cursor="cta">
+          <Link
+            to="/"
+            aria-label="M.M Fashions, home"
+            className="-ml-1 shrink-0 rounded-md p-1 dark:ml-0 dark:rounded-lg dark:bg-white dark:px-2"
+            data-cursor="cta"
+          >
             <Logo
               className={cn(
                 "w-auto transition-[height] duration-500 ease-premium",
@@ -52,7 +58,7 @@ export function Header() {
                     className={({ isActive }) =>
                       cn(
                         "group relative inline-flex h-11 items-center px-3 text-[15px] font-medium transition-colors duration-300",
-                        isActive ? "text-ink" : "text-body hover:text-ink",
+                        isActive ? "text-fg" : "text-body hover:text-fg",
                       )
                     }
                   >
@@ -75,6 +81,7 @@ export function Header() {
           </nav>
 
           <div className="ml-auto flex items-center gap-2 lg:ml-0">
+            <ThemeToggle />
             <Button asChild className="hidden lg:inline-flex">
               <a href={site.whatsapp.quoteUrl} target="_blank" rel="noopener noreferrer">
                 <WhatsAppIcon className="size-[18px]" />

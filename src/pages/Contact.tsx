@@ -10,7 +10,7 @@ import { site } from "@/config/site";
 import { contactPage } from "@/content/contact";
 
 const cardClass =
-  "group flex h-full flex-col rounded-card border border-line bg-white p-6 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-7";
+  "group flex h-full flex-col rounded-card border border-line bg-surface p-6 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent dark:hover:border-fg/20 hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-7";
 
 function CardHead({ icon: IconCmp, title, tone = "teal" }: { icon: LucideIcon | typeof WhatsAppIcon; title: string; tone?: "teal" | "green" }) {
   return (
@@ -27,7 +27,7 @@ function LinkCard({ href, external, children }: { href: string; external?: boole
   return (
     <a href={href} className={cardClass} {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
       {children}
-      <ArrowUpRight aria-hidden className="mt-auto size-5 translate-y-3 self-end text-ink/30 transition-[color,transform] duration-500 ease-premium group-hover:-translate-y-0 group-hover:translate-x-0.5 group-hover:text-red" />
+      <ArrowUpRight aria-hidden className="mt-auto size-5 translate-y-3 self-end text-fg/30 transition-[color,transform] duration-500 ease-premium group-hover:-translate-y-0 group-hover:translate-x-0.5 group-hover:text-red-fg" />
     </a>
   );
 }
@@ -39,14 +39,14 @@ export default function ContactPage() {
       <Seo page="contact" />
       <PageHero {...contactPage.hero} />
 
-      <section className="section-y bg-white" aria-label="Ways to reach us">
+      <section className="section-y bg-surface" aria-label="Ways to reach us">
         <RevealGroup as="ul" className="container-page grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-5">
           <RevealItem as="li">
             <div className={cardClass}>
               <CardHead icon={Phone} title={cards.call.title} />
               <div className="mt-3 flex flex-col">
                 {site.phones.map((p) => (
-                  <a key={p.href} href={p.href} className="inline-flex min-h-11 items-center text-[16px] font-medium text-ink transition-colors hover:text-red">
+                  <a key={p.href} href={p.href} className="inline-flex min-h-11 items-center text-[16px] font-medium text-fg transition-colors hover:text-red-fg">
                     {p.label}
                   </a>
                 ))}
@@ -65,7 +65,7 @@ export default function ContactPage() {
           <RevealItem as="li">
             <LinkCard href={`mailto:${site.email}`}>
               <CardHead icon={Mail} title={cards.email.title} />
-              <p className="mt-3 text-[16px] font-medium break-words text-ink">
+              <p className="mt-3 text-[16px] font-medium break-words text-fg">
                 {/* Break after the @ rather than mid-word on narrow cards. */}
                 {site.email.split("@")[0]}@<wbr />
                 {site.email.split("@")[1]}
@@ -99,12 +99,12 @@ export default function ContactPage() {
               href={site.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group mt-4 inline-flex min-h-11 items-center gap-2 self-start text-[15px] font-semibold text-teal hover:text-ink"
+              className="group mt-4 inline-flex min-h-11 items-center gap-2 self-start text-[15px] font-semibold text-accent hover:text-fg"
             >
               {map.open}
               <ArrowUpRight className="size-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden />
             </a>
-            <div className="mt-6 h-[280px] overflow-hidden rounded-card border border-line bg-white sm:h-[320px] lg:h-[360px]">
+            <div className="mt-6 h-[280px] overflow-hidden rounded-card border border-line bg-surface sm:h-[320px] lg:h-[360px]">
               <iframe
                 title={map.iframeTitle}
                 src={site.mapEmbedUrl}

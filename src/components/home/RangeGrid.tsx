@@ -31,9 +31,9 @@ export function RangeGrid() {
             <RevealItem as="li" key={range.slug}>
               <Link
                 to={catalogueHref(range.slug)}
-                className="group flex h-full flex-col rounded-card border border-line bg-white p-2 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-3"
+                className="group flex h-full flex-col rounded-card border border-line bg-surface p-2 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent dark:hover:border-fg/20 hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-3"
               >
-                <span className="block aspect-square overflow-hidden rounded-xl">
+                <span className="block aspect-square overflow-hidden rounded-xl bg-white">
                   <ModelImage
                     model={getRangeCover(range.slug)}
                     alt=""
@@ -42,10 +42,10 @@ export function RangeGrid() {
                   />
                 </span>
                 <span className="flex flex-1 flex-col px-1 pt-2.5 pb-1 sm:px-1.5 sm:pt-3">
-                  <span className="text-[13px] leading-snug font-semibold text-ink sm:text-[15px]">{range.name}</span>
+                  <span className="text-[13px] leading-snug font-semibold text-fg sm:text-[15px]">{range.name}</span>
                   <span className="mt-1 flex items-center justify-between gap-2 text-xs text-muted sm:text-[13px]">
                     {getRangeCount(range.slug)} models
-                    <Arrow className="hidden size-4 text-ink/40 group-hover:text-red sm:block" />
+                    <Arrow className="hidden size-4 text-fg/40 group-hover:text-red-fg sm:block" />
                   </span>
                 </span>
               </Link>

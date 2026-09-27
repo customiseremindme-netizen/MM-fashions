@@ -12,18 +12,18 @@ import { customisation } from "@/content/shared";
 export function Customisation({ variant = "dark" }: { variant?: "dark" | "light" }) {
   if (variant === "light") {
     return (
-      <section className="section-y bg-white" aria-labelledby="customisation-title">
+      <section className="section-y bg-surface" aria-labelledby="customisation-title">
         <div className="container-page">
           <SectionHeader id="customisation-title" title={customisation.title} intro={customisation.intro} />
           <RevealGroup as="ul" className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-5">
             {customisation.items.map((item) => (
               <RevealItem as="li" key={item.title}>
-                <div className="flex h-full gap-4 rounded-card border border-line bg-white p-6 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-7">
+                <div className="flex h-full gap-4 rounded-card border border-line bg-surface p-6 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent dark:hover:border-fg/20 hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-7">
                   <span className="grid size-11 shrink-0 place-items-center rounded-full bg-red text-white">
                     <Icon name={item.icon} className="size-5" />
                   </span>
                   <div>
-                    <h3 className="text-[17px] leading-snug font-semibold text-ink">{item.title}</h3>
+                    <h3 className="text-[17px] leading-snug font-semibold text-fg">{item.title}</h3>
                     <p className="mt-1.5 text-[15px] leading-relaxed text-muted">{item.text}</p>
                   </div>
                 </div>

@@ -27,8 +27,8 @@ export function SectionHeader({ title, intro, action, align = "left", tone = "li
       )}
     >
       <div className={cn(centered && "flex flex-col items-center")}>
-        <span aria-hidden className={cn("mb-5 block h-1 w-12 rounded-full", dark ? "bg-teal-light" : "bg-teal")} />
-        <h2 id={id} className={cn("text-h2 max-w-[22ch]", dark ? "text-white" : "text-ink")}>
+        <span aria-hidden className={cn("mb-5 block h-1 w-12 rounded-full", dark ? "bg-teal-light" : "bg-accent")} />
+        <h2 id={id} className={cn("text-h2 max-w-[22ch]", dark ? "text-white" : "text-fg")}>
           {title}
         </h2>
         {intro && (

@@ -15,7 +15,7 @@ export function AccordionTrigger({ className, children, ...props }: ComponentPro
       <AccordionPrimitive.Trigger
         data-cursor="cta"
         className={cn(
-          "group flex min-h-11 flex-1 items-start justify-between gap-6 py-5 text-left text-h3 text-ink transition-colors duration-300 hover:text-red sm:py-6",
+          "group flex min-h-11 flex-1 items-start justify-between gap-6 py-5 text-left text-h3 text-fg transition-colors duration-300 hover:text-red-fg sm:py-6",
           className,
         )}
         {...props}
@@ -23,7 +23,7 @@ export function AccordionTrigger({ className, children, ...props }: ComponentPro
         <span className="pt-0.5">{children}</span>
         <span
           aria-hidden
-          className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full border border-line text-ink transition-[background-color,border-color,color,transform] duration-500 ease-premium group-hover:border-red group-data-[state=open]:rotate-45 group-data-[state=open]:border-red group-data-[state=open]:bg-red group-data-[state=open]:text-white"
+          className="mt-0.5 grid size-9 shrink-0 place-items-center rounded-full border border-line text-fg transition-[background-color,border-color,color,transform] duration-500 ease-premium group-hover:border-red group-data-[state=open]:rotate-45 group-data-[state=open]:border-red group-data-[state=open]:bg-red group-data-[state=open]:text-white"
         >
           <Plus className="size-4" strokeWidth={2.25} />
         </span>

@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 // shadcn/ui-style form controls. Native <select> keeps the phone's own picker.
 
 const control =
-  "w-full rounded-xl border border-line bg-white px-4 text-[15px] text-ink placeholder:text-muted/80 transition-[border-color,box-shadow] duration-200 hover:border-ink/25 focus-visible:border-teal focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-teal/15 aria-[invalid=true]:border-red aria-[invalid=true]:ring-red/10";
+  "w-full rounded-xl border border-line bg-surface px-4 text-[15px] text-fg placeholder:text-muted/80 transition-[border-color,box-shadow] duration-200 hover:border-fg/25 focus-visible:border-accent focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/20 aria-[invalid=true]:border-red aria-[invalid=true]:ring-red/10";
 
 export function Label({ className, ...props }: ComponentProps<"label">) {
-  return <label className={cn("mb-2 block text-sm font-medium text-ink", className)} {...props} />;
+  return <label className={cn("mb-2 block text-sm font-medium text-fg", className)} {...props} />;
 }
 
 export function Input({ className, ...props }: ComponentProps<"input">) {

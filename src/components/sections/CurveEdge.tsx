@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 
 type Fill = "white" | "chalk" | "red";
 const fills: Record<Fill, string> = {
-  white: "var(--color-white)",
+  white: "var(--color-surface)",
   chalk: "var(--color-chalk)",
   red: "var(--color-red)",
 };

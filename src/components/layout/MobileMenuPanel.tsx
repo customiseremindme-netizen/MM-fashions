@@ -41,7 +41,7 @@ export default function MobileMenuPanel({ open, onOpenChange, returnFocusTo }: P
               }}
             >
               <m.div
-                className="fixed inset-0 z-50 flex h-dvh flex-col overflow-y-auto bg-white lg:hidden"
+                className="fixed inset-0 z-50 flex h-dvh flex-col overflow-y-auto bg-surface lg:hidden"
                 initial={reduce ? false : { y: "-100%" }}
                 animate={{ y: 0 }}
                 exit={reduce ? { opacity: 0 } : { y: "-100%" }}
@@ -50,14 +50,14 @@ export default function MobileMenuPanel({ open, onOpenChange, returnFocusTo }: P
                 <Dialog.Title className="sr-only">Menu</Dialog.Title>
 
                 <div className="container-page flex h-16 shrink-0 items-center justify-between border-b border-line">
-                  <Link to="/" onClick={close} aria-label="M.M Fashions, home" className="-ml-1 rounded-md p-1">
+                  <Link to="/" onClick={close} aria-label="M.M Fashions, home" className="-ml-1 rounded-md p-1 dark:ml-0 dark:rounded-lg dark:bg-white dark:px-2">
                     <Logo className="h-10" />
                   </Link>
                   <Dialog.Close asChild>
                     <button
                       type="button"
                       aria-label="Close menu"
-                      className="grid size-11 place-items-center rounded-full border border-line text-ink transition-colors hover:border-ink"
+                      className="grid size-11 place-items-center rounded-full border border-line text-fg transition-colors hover:border-fg"
                     >
                       <X className="size-5" strokeWidth={2} />
                     </button>
@@ -81,7 +81,7 @@ export default function MobileMenuPanel({ open, onOpenChange, returnFocusTo }: P
                           className={({ isActive }) =>
                             cn(
                               "group flex min-h-16 items-center justify-between gap-4 py-3 text-[32px] leading-none font-bold tracking-tight transition-colors sm:text-[40px]",
-                              isActive ? "text-red" : "text-ink hover:text-red",
+                              isActive ? "text-red-fg" : "text-fg hover:text-red-fg",
                             )
                           }
                         >
@@ -91,7 +91,7 @@ export default function MobileMenuPanel({ open, onOpenChange, returnFocusTo }: P
                             </span>
                             {item.label}
                           </span>
-                          <Arrow className="size-6 text-muted group-hover:text-red" />
+                          <Arrow className="size-6 text-muted group-hover:text-red-fg" />
                         </NavLink>
                       </m.li>
                     ))}
@@ -113,8 +113,8 @@ export default function MobileMenuPanel({ open, onOpenChange, returnFocusTo }: P
                   <ul className="mt-5 grid gap-1 text-[15px] sm:grid-cols-2">
                     {site.phones.map((p) => (
                       <li key={p.href}>
-                        <a href={p.href} className="flex min-h-11 items-center gap-3 font-medium text-ink hover:text-red">
-                          <Phone className="size-4 text-teal" aria-hidden />
+                        <a href={p.href} className="flex min-h-11 items-center gap-3 font-medium text-fg hover:text-red-fg">
+                          <Phone className="size-4 text-accent" aria-hidden />
                           {p.label}
                         </a>
                       </li>
@@ -122,9 +122,9 @@ export default function MobileMenuPanel({ open, onOpenChange, returnFocusTo }: P
                     <li className="sm:col-span-2">
                       <a
                         href={`mailto:${site.email}`}
-                        className="flex min-h-11 items-center gap-3 font-medium break-all text-ink hover:text-red"
+                        className="flex min-h-11 items-center gap-3 font-medium break-all text-fg hover:text-red-fg"
                       >
-                        <Mail className="size-4 shrink-0 text-teal" aria-hidden />
+                        <Mail className="size-4 shrink-0 text-accent" aria-hidden />
                         {site.email}
                       </a>
                     </li>

@@ -139,14 +139,14 @@ export function FilterBar({ range, onRangeChange, query, onQueryChange }: Filter
             placeholder={catalogue.searchPlaceholder}
             value={query}
             onChange={(e) => onQueryChange(e.target.value)}
-            className="h-12 w-full rounded-full border border-line bg-white pr-12 pl-11 text-[15px] text-ink placeholder:text-muted/80 transition-[border-color,box-shadow] hover:border-ink/25 focus-visible:border-teal focus-visible:ring-4 focus-visible:ring-teal/15 focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
+            className="h-12 w-full rounded-full border border-line bg-surface pr-12 pl-11 text-[15px] text-fg placeholder:text-muted/80 transition-[border-color,box-shadow] hover:border-fg/25 focus-visible:border-accent focus-visible:ring-4 focus-visible:ring-accent/20 focus-visible:outline-none [&::-webkit-search-cancel-button]:hidden"
           />
           {query && (
             <button
               type="button"
               onClick={() => onQueryChange("")}
               aria-label={catalogue.empty.clear}
-              className="absolute top-1/2 right-1 grid size-10 -translate-y-1/2 place-items-center rounded-full text-muted transition-colors hover:bg-ink/5 hover:text-ink"
+              className="absolute top-1/2 right-1 grid size-10 -translate-y-1/2 place-items-center rounded-full text-muted transition-colors hover:bg-fg/5 hover:text-fg"
             >
               <X className="size-4" />
             </button>
@@ -174,14 +174,14 @@ export function FilterBar({ range, onRangeChange, query, onQueryChange }: Filter
                   onClick={() => onRangeChange(chip.slug)}
                   className={cn(
                     "inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full border px-4 text-sm font-medium whitespace-nowrap transition-colors duration-300",
-                    active ? "border-ink bg-ink text-white" : "border-line bg-white text-ink hover:border-ink/40",
+                    active ? "border-fg bg-fg text-surface" : "border-line bg-surface text-fg hover:border-fg/40",
                   )}
                 >
                   {chip.name}
                   <span
                     className={cn(
                       "rounded-full px-1.5 py-0.5 text-xs leading-none font-semibold tabular-nums",
-                      active ? "bg-white/15 text-white" : "bg-chalk text-muted",
+                      active ? "bg-surface/15 text-surface" : "bg-chalk text-muted",
                     )}
                   >
                     {chip.count}
@@ -202,7 +202,7 @@ export function FilterBar({ range, onRangeChange, query, onQueryChange }: Filter
                 aria-label={side === "left" ? "Show earlier ranges" : "Show more ranges"}
                 onClick={() => scrollBy(side === "left" ? -1 : 1)}
                 className={cn(
-                  "absolute top-1/2 hidden size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-white text-ink shadow-[0_6px_16px_-8px_rgba(28,31,38,0.35)] transition-colors hover:border-ink hover:bg-ink hover:text-white lg:grid",
+                  "absolute top-1/2 hidden size-11 -translate-y-1/2 place-items-center rounded-full border border-line bg-surface text-fg shadow-[0_6px_16px_-8px_rgba(28,31,38,0.35)] transition-colors hover:border-fg hover:bg-fg hover:text-surface lg:grid",
                   side === "left" ? "-left-3" : "-right-3",
                 )}
               >

@@ -13,7 +13,7 @@ function FabricChips({ names }: { names: string[] }) {
   return (
     <ul className="flex flex-wrap gap-2">
       {names.map((name) => (
-        <li key={name} className="rounded-full border border-line bg-white px-3.5 py-1.5 text-sm font-medium text-ink">
+        <li key={name} className="rounded-full border border-line bg-surface px-3.5 py-1.5 text-sm font-medium text-fg">
           {name}
         </li>
       ))}
@@ -29,11 +29,11 @@ export default function FabricsPage() {
       <PageHero {...fabricsPage.hero} />
 
       {/* Three fabric groups, 3 / 1 / 1 */}
-      <section className="section-y bg-white" aria-label="Fabric groups">
+      <section className="section-y bg-surface" aria-label="Fabric groups">
         <RevealGroup as="ul" className="container-page grid gap-4 lg:grid-cols-3 lg:gap-5">
           {fabricGroups.map((group) => (
             <RevealItem as="li" key={group.id}>
-              <article id={group.id} className="flex h-full flex-col rounded-card border border-line bg-white p-6 sm:p-8">
+              <article id={group.id} className="flex h-full flex-col rounded-card border border-line bg-surface p-6 sm:p-8">
                 <span className="grid size-12 place-items-center rounded-full bg-teal text-white">
                   <Icon name={group.icon} className="size-[22px]" />
                 </span>
@@ -42,7 +42,7 @@ export default function FabricsPage() {
                 <dl className="mt-6 border-t border-line">
                   {group.fabrics.map((fabric) => (
                     <div key={fabric.name} className="border-b border-line py-4 last:border-b-0 sm:grid sm:grid-cols-[minmax(0,11rem)_1fr] sm:gap-6 lg:block">
-                      <dt className="text-[16px] font-semibold text-ink">{fabric.name}</dt>
+                      <dt className="text-[16px] font-semibold text-fg">{fabric.name}</dt>
                       <dd className="mt-1 text-[15px] leading-relaxed text-muted sm:mt-0 lg:mt-1">{fabric.text}</dd>
                     </div>
                   ))}
@@ -70,7 +70,7 @@ export default function FabricsPage() {
           <SectionHeader id="guide-title" title={guide.title} intro={guide.note} />
           <Reveal>
             {/* Table on tablet and desktop */}
-            <div className="hidden overflow-hidden rounded-card border border-line bg-white sm:block">
+            <div className="hidden overflow-hidden rounded-card border border-line bg-surface sm:block">
               <table className="w-full border-collapse text-left">
                 <caption className="sr-only">{guide.title}</caption>
                 <thead>
@@ -86,7 +86,7 @@ export default function FabricsPage() {
                 <tbody>
                   {guide.rows.map((row) => (
                     <tr key={row.use} className="border-b border-line transition-colors last:border-b-0 hover:bg-chalk/60">
-                      <th scope="row" className="px-6 py-5 text-[16px] font-semibold text-ink lg:px-8">
+                      <th scope="row" className="px-6 py-5 text-[16px] font-semibold text-fg lg:px-8">
                         {row.use}
                       </th>
                       <td className="px-6 py-5 lg:px-8">
@@ -101,8 +101,8 @@ export default function FabricsPage() {
             {/* Stacked cards on mobile */}
             <ul className="grid gap-3 sm:hidden">
               {guide.rows.map((row) => (
-                <li key={row.use} className="rounded-card border border-line bg-white p-5">
-                  <p className="text-[16px] font-semibold text-ink">{row.use}</p>
+                <li key={row.use} className="rounded-card border border-line bg-surface p-5">
+                  <p className="text-[16px] font-semibold text-fg">{row.use}</p>
                   <div className="mt-3">
                     <FabricChips names={row.fabrics} />
                   </div>

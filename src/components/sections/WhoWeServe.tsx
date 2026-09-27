@@ -18,8 +18,8 @@ export function WhoWeServeGrid({ layout = "wide", headingLevel = "h3" }: WhoWeSe
     >
       {whoWeServe.items.map((item) => (
         <RevealItem as="li" key={item.title}>
-          <article className="group flex h-full gap-4 rounded-card border border-line bg-white p-5 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:flex-col sm:gap-6 sm:p-7">
-            <span className="grid size-12 shrink-0 place-items-center rounded-full bg-chalk text-teal transition-colors duration-500 group-hover:bg-teal group-hover:text-white">
+          <article className="group flex h-full gap-4 rounded-card border border-line bg-surface p-5 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent dark:hover:border-fg/20 hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:flex-col sm:gap-6 sm:p-7">
+            <span className="grid size-12 shrink-0 place-items-center rounded-full bg-chalk text-accent transition-colors duration-500 group-hover:bg-teal group-hover:text-white">
               <Icon name={item.icon} className="size-[22px]" />
             </span>
             <div>

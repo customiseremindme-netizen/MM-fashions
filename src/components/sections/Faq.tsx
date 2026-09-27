@@ -8,10 +8,10 @@ import { faq } from "@/content/faq";
 /** "Questions buyers ask", 38 / 62 on desktop, first answer open. */
 export function Faq() {
   return (
-    <section id={faq.id} className="section-y bg-white" aria-labelledby="faq-title">
+    <section id={faq.id} className="section-y bg-surface" aria-labelledby="faq-title">
       <div className="container-page grid gap-10 lg:grid-cols-[38fr_62fr] lg:gap-16 xl:gap-24">
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
-          <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-teal" />
+          <span aria-hidden className="mb-5 block h-1 w-12 rounded-full bg-accent" />
           <h2 id="faq-title" className="text-h2 max-w-[16ch]">
             {faq.title}
           </h2>

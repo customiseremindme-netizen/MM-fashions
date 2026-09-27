@@ -52,7 +52,7 @@ export function EnquiryForm({ className }: { className?: string }) {
       noValidate
       onSubmit={onSubmit}
       aria-labelledby={`${id}-title`}
-      className={cn("rounded-card bg-white p-6 text-body shadow-[0_30px_80px_-40px_rgba(0,0,0,0.5)] sm:p-8 lg:p-10", className)}
+      className={cn("rounded-card bg-surface p-6 text-body shadow-[0_30px_80px_-40px_rgba(0,0,0,0.5)] sm:p-8 lg:p-10", className)}
     >
       <h3 id={`${id}-title`} className="text-h3">
         {enquiryForm.title}
@@ -63,7 +63,7 @@ export function EnquiryForm({ className }: { className?: string }) {
         <div>
           <Label htmlFor={`${id}-name`}>
             {f.name.label}
-            <span className="text-red" aria-hidden>
+            <span className="text-red-fg" aria-hidden>
               *
             </span>
           </Label>
@@ -77,7 +77,7 @@ export function EnquiryForm({ className }: { className?: string }) {
             aria-describedby={error ? errorId : undefined}
           />
           {error && (
-            <p id={errorId} role="alert" className="mt-2 text-sm font-medium text-red">
+            <p id={errorId} role="alert" className="mt-2 text-sm font-medium text-red-fg">
               {enquiryForm.nameError}
             </p>
           )}
@@ -131,10 +131,10 @@ export function EnquiryForm({ className }: { className?: string }) {
       <div aria-live="polite">
         {sentUrl && (
           <p className="mt-4 flex gap-2.5 text-sm text-muted">
-            <CircleCheck className="mt-0.5 size-4 shrink-0 text-teal" aria-hidden />
+            <CircleCheck className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
             <span>
               {enquiryForm.sentNote}{" "}
-              <a href={sentUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-teal underline underline-offset-4">
+              <a href={sentUrl} target="_blank" rel="noopener noreferrer" className="font-medium text-accent underline underline-offset-4">
                 {enquiryForm.sentFallback}
               </a>
             </span>

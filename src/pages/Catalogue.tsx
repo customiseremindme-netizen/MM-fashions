@@ -124,7 +124,7 @@ export default function CataloguePage() {
 
         <div className="container-page pt-6 pb-16 sm:pt-8 sm:pb-20 lg:pb-24">
           <div className="mb-6 flex flex-col gap-1.5 sm:mb-8 lg:flex-row lg:items-baseline lg:justify-between lg:gap-8">
-            <p className="text-[15px] font-semibold text-ink" aria-live="polite">
+            <p className="text-[15px] font-semibold text-fg" aria-live="polite">
               {status}
             </p>
             <p className="text-sm text-muted">{catalogue.hint}</p>
@@ -133,11 +133,11 @@ export default function CataloguePage() {
           {!hydrated ? (
             <GridSkeleton count={pageSize} />
           ) : results.length === 0 ? (
-            <div className="flex flex-col items-center rounded-card border border-dashed border-ink/15 bg-white px-6 py-16 text-center">
+            <div className="flex flex-col items-center rounded-card border border-dashed border-fg/15 bg-surface px-6 py-16 text-center">
               <span className="grid size-14 place-items-center rounded-full bg-chalk text-muted">
                 <SearchX className="size-6" aria-hidden />
               </span>
-              <p className="measure mt-5 text-[16px] text-ink">{catalogue.empty.text.replace("{query}", query.trim())}</p>
+              <p className="measure mt-5 text-[16px] text-fg">{catalogue.empty.text.replace("{query}", query.trim())}</p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <Button type="button" variant="outline" onClick={() => onQueryChange("")}>
                   {catalogue.empty.clear}
@@ -206,7 +206,7 @@ function GridSkeleton({ count }: { count: number }) {
   return (
     <ul aria-hidden className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(176px,1fr))]">
       {Array.from({ length: count }, (_, i) => (
-        <li key={i} className="flex flex-col rounded-card border border-line bg-white">
+        <li key={i} className="flex flex-col rounded-card border border-line bg-surface">
           <span className="m-[10px] block aspect-square rounded-xl bg-chalk" />
           <span className="flex items-center gap-2 border-t border-line/70 py-2 pr-2 pl-3 sm:pl-4">
             <span className="flex-1">

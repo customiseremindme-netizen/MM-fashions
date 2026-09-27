@@ -31,7 +31,7 @@ export const ModelCard = memo(function ModelCard({ model, selected, onToggle, on
     >
       <article
         className={cn(
-          "group relative flex h-full flex-col rounded-card border bg-white transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)]",
+          "group relative flex h-full flex-col rounded-card border bg-surface transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)]",
           selected ? "border-red ring-1 ring-red" : "border-line",
         )}
       >
@@ -40,7 +40,7 @@ export const ModelCard = memo(function ModelCard({ model, selected, onToggle, on
           data-cursor="view"
           aria-haspopup="dialog"
           onClick={() => onOpen(model.no)}
-          className="block overflow-hidden rounded-t-[15px] p-[10px]"
+          className="block overflow-hidden rounded-t-[15px] bg-white p-[10px]"
         >
           <ModelImage
             model={model}
@@ -50,7 +50,7 @@ export const ModelCard = memo(function ModelCard({ model, selected, onToggle, on
         </button>
         <div className="flex items-center gap-2 border-t border-line/70 py-2 pr-2 pl-3 sm:pl-4">
           <div className="min-w-0 flex-1">
-            <p className="truncate text-[15px] leading-tight font-bold text-ink tabular-nums">{model.no}</p>
+            <p className="truncate text-[15px] leading-tight font-bold text-fg tabular-nums">{model.no}</p>
             <p className="mt-0.5 line-clamp-2 text-xs leading-snug text-muted">{rangeName}</p>
           </div>
           <button
@@ -63,7 +63,7 @@ export const ModelCard = memo(function ModelCard({ model, selected, onToggle, on
             aria-label={`${selected ? catalogue.shortlist.remove : catalogue.shortlist.add}: model ${model.no}`}
             className={cn(
               "grid size-11 shrink-0 place-items-center rounded-full border transition-[background-color,border-color,color] duration-300",
-              selected ? "border-red bg-red text-white" : "border-line bg-white text-ink hover:border-ink hover:bg-ink hover:text-white",
+              selected ? "border-red bg-red text-white" : "border-line bg-surface text-fg hover:border-fg hover:bg-fg hover:text-surface",
             )}
           >
             <span key={String(selected)} className={cn("grid place-items-center", touched && "animate-pop")}>

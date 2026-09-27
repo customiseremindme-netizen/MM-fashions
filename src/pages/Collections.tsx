@@ -23,7 +23,7 @@ export default function CollectionsPage() {
         <FeatureBlock key={feature.id} feature={feature} index={i} total={features.length} />
       ))}
 
-      <section className="section-y bg-white" aria-labelledby="all-ranges-title">
+      <section className="section-y bg-surface" aria-labelledby="all-ranges-title">
         <div className="container-page">
           <SectionHeader id="all-ranges-title" title={collectionsPage.allRanges.title} />
           <RevealGroup as="ul" stagger={0.06} className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
@@ -31,7 +31,7 @@ export default function CollectionsPage() {
               <RevealItem as="li" key={range.slug}>
                 <Link
                   to={catalogueHref(range.slug)}
-                  className="group flex h-full flex-col rounded-card border border-line bg-white p-2.5 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-3"
+                  className="group flex h-full flex-col rounded-card border border-line bg-surface p-2.5 transition-[transform,box-shadow,border-color] duration-500 ease-premium hover:-translate-y-1 hover:border-transparent dark:hover:border-fg/20 hover:shadow-[0_22px_48px_-28px_rgba(28,31,38,0.45)] sm:p-3"
                 >
                   <span className="block aspect-[4/3] overflow-hidden rounded-xl bg-white">
                     <ModelImage
@@ -43,13 +43,13 @@ export default function CollectionsPage() {
                   </span>
                   <span className="flex flex-1 flex-col px-1.5 pt-3 pb-2 sm:px-2">
                     <span className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                      <span className="text-[15px] leading-snug font-semibold text-ink sm:text-[17px]">{range.name}</span>
-                      <span className="shrink-0 text-xs font-medium text-teal tabular-nums sm:text-[13px]">
+                      <span className="text-[15px] leading-snug font-semibold text-fg sm:text-[17px]">{range.name}</span>
+                      <span className="shrink-0 text-xs font-medium text-accent tabular-nums sm:text-[13px]">
                         {getRangeCount(range.slug)} models
                       </span>
                     </span>
                     <span className="mt-2 text-[13px] leading-relaxed text-muted sm:text-sm">{rangeDescriptions[range.slug]}</span>
-                    <span className="mt-auto hidden items-center gap-2 pt-4 text-sm font-semibold text-ink group-hover:text-red sm:inline-flex">
+                    <span className="mt-auto hidden items-center gap-2 pt-4 text-sm font-semibold text-fg group-hover:text-red-fg sm:inline-flex">
                       See models
                       <Arrow className="size-4" />
                     </span>
@@ -71,7 +71,7 @@ function FeatureBlock({ feature, index, total }: { feature: CollectionFeature; i
   const [tall, ...stacked] = feature.images;
   return (
     <section
-      className={cn("section-y", index % 2 === 0 ? "bg-white" : "bg-chalk")}
+      className={cn("section-y", index % 2 === 0 ? "bg-surface" : "bg-chalk")}
       aria-labelledby={`${feature.id}-title`}
       id={feature.id}
     >
@@ -101,7 +101,7 @@ function FeatureBlock({ feature, index, total }: { feature: CollectionFeature; i
         </Reveal>
 
         <Reveal delay={0.1} className={cn(flip && "lg:order-1")}>
-          <p className="text-sm font-semibold text-teal tabular-nums">
+          <p className="text-sm font-semibold text-accent tabular-nums">
             {String(index + 1).padStart(2, "0")}
             <span className="text-muted"> / {String(total).padStart(2, "0")}</span>
           </p>
@@ -114,7 +114,7 @@ function FeatureBlock({ feature, index, total }: { feature: CollectionFeature; i
               <li key={slug}>
                 <Link
                   to={catalogueHref(slug)}
-                  className="inline-flex min-h-11 items-center rounded-full border border-line bg-white px-4 text-sm font-medium text-ink transition-colors duration-300 hover:border-ink hover:bg-ink hover:text-white"
+                  className="inline-flex min-h-11 items-center rounded-full border border-line bg-surface px-4 text-sm font-medium text-fg transition-colors duration-300 hover:border-fg hover:bg-fg hover:text-surface"
                 >
                   {getRangeName(slug)}
                 </Link>

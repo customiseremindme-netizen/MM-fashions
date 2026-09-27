@@ -13,10 +13,10 @@ const buttonVariants = cva(
         primary: "bg-red text-white hover:bg-red-deep",
         // Ink text keeps WCAG AA contrast on the WhatsApp green (5.3:1).
         whatsapp: "bg-whatsapp text-ink hover:bg-whatsapp-hover",
-        dark: "bg-ink text-white hover:bg-ink-soft",
-        outline: "border border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-white",
+        dark: "bg-fg text-surface hover:bg-fg/85",
+        outline: "border border-fg/20 bg-transparent text-fg hover:border-fg hover:bg-fg hover:text-surface",
         outlineLight: "border border-white/40 bg-transparent text-white hover:border-white hover:bg-white hover:text-ink",
-        ghost: "text-ink hover:bg-ink/5",
+        ghost: "text-fg hover:bg-fg/5",
         ghostLight: "text-white/85 hover:bg-white/10 hover:text-white",
       },
       size: {
