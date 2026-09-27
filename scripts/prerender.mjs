@@ -92,5 +92,7 @@ await writeFile(
 );
 await writeFile(path.join(dist, "robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${site}/sitemap.xml\n`);
 
+// Build-only files: the server bundle and Vite's chunk manifest.
 await rm(serverOut, { recursive: true, force: true });
+await rm(path.join(dist, ".vite"), { recursive: true, force: true });
 console.log(`prerendered ${count} pages, sitemap.xml and robots.txt`);

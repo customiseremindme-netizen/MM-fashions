@@ -16,7 +16,7 @@ npm run preview    # serve dist/ like a static host on http://localhost:4173
 npm run images     # regenerate WebP derivatives after changing a photo or model image
 ```
 
-Node 20.19 or newer.
+Node 20.19 or newer (Vercel's default Node 22 works).
 
 ## Pages
 
@@ -72,6 +72,8 @@ The supplied files are used as-is. `npm run images` (sharp) writes WebP copies n
 - every route is **prerendered** to its own HTML file (`dist/about/index.html`, …, `dist/404.html`) with its own title, description, canonical URL, Open Graph tags and JSON-LD, then hydrated in the browser;
 - `sitemap.xml` and `robots.txt`;
 - `_headers` (Netlify, Cloudflare Pages) and `.htaccess` (Apache/LiteSpeed shared hosting) for caching and 404 handling.
+
+**Vercel:** `vercel.json` sets everything (Vite framework, `npm ci`, `npm run build`, output directory `dist`, clean URLs, caching headers), so the project's own framework preset and output-directory settings are overridden and nothing needs changing in the dashboard.
 
 Upload `dist/` to any static host. Serve unknown paths with `404.html` (most hosts do this automatically); do not configure an "SPA fallback" that rewrites every path to `index.html` — it still works, but each page then renders in the browser instead of using its prerendered HTML.
 

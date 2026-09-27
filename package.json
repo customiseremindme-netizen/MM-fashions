@@ -4,9 +4,6 @@
   "version": "1.0.0",
   "description": "M.M Fashions, Tirupur — uniform manufacturer website (React, Vite, TypeScript, Tailwind, shadcn/ui, Framer Motion).",
   "type": "module",
-  "engines": {
-    "node": ">=20.19"
-  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build && node scripts/prerender.mjs",
