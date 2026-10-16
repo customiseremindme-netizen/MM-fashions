@@ -6,6 +6,8 @@ const quoteText = "Hello M.M Fashions, I would like a quote for uniforms.";
 
 export const site = {
   name: "M.M Fashions",
+  /** How people often type the name; used in structured data and llms.txt. */
+  alternateName: "MM Fashions",
   tagline: "Mfrs of hosiery garments, sports wear, regular and house uniforms",
   url: "https://www.mmfashions.in",
   websiteLabel: "www.mmfashions.in",

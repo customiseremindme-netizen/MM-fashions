@@ -43,11 +43,11 @@ export default function CollectionsPage() {
                   </span>
                   <span className="flex flex-1 flex-col px-1.5 pt-3 pb-2 sm:px-2">
                     <span className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-3">
-                      <span className="text-[15px] leading-snug font-semibold text-fg sm:text-[17px]">{range.name}</span>
+                      <span className="text-[15px] leading-snug font-semibold text-fg sm:text-[17px]">{range.name}</span>{" "}
                       <span className="shrink-0 text-xs font-medium text-accent tabular-nums sm:text-[13px]">
                         {getRangeCount(range.slug)} models
                       </span>
-                    </span>
+                    </span>{" "}
                     <span className="mt-2 text-[13px] leading-relaxed text-muted sm:text-sm">{rangeDescriptions[range.slug]}</span>
                     <span className="mt-auto hidden items-center gap-2 pt-4 text-sm font-semibold text-fg group-hover:text-red-fg sm:inline-flex">
                       See models

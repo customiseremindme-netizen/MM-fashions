@@ -21,6 +21,8 @@ export function renderLlmsTxt(): string {
     "",
     `> ${footer.about}`,
     "",
+    `Also written as ${site.alternateName}.`,
+    "",
     home.intro.paragraphs.join("\n\n"),
     "",
     about.story.paragraphs[2],

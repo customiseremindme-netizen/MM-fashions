@@ -42,7 +42,7 @@ export function RangeGrid() {
                   />
                 </span>
                 <span className="flex flex-1 flex-col px-1 pt-2.5 pb-1 sm:px-1.5 sm:pt-3">
-                  <span className="text-[13px] leading-snug font-semibold text-fg sm:text-[15px]">{range.name}</span>
+                  <span className="text-[13px] leading-snug font-semibold text-fg sm:text-[15px]">{range.name}</span>{" "}
                   <span className="mt-1 flex items-center justify-between gap-2 text-xs text-muted sm:text-[13px]">
                     {getRangeCount(range.slug)} models
                     <Arrow className="hidden size-4 text-fg/40 group-hover:text-red-fg sm:block" />

@@ -29,7 +29,9 @@ export function HomeHero() {
 
           <h1 id="hero-title" className="text-hero mt-6 text-white uppercase sm:mt-8">
             {hero.lines.map((line, i) => (
-              // Each word slides up out of its own mask, 90ms apart.
+              // Each word slides up out of its own mask, 90ms apart. The space
+              // after each word isn't rendered (the spans are blocks) but keeps
+              // the words apart in the page's text.
               <span key={line.word} className="-mb-[0.1em] block overflow-hidden pb-[0.1em]">
                 <span
                   className={cn(
@@ -40,7 +42,7 @@ export function HomeHero() {
                   style={delay(LINE_DELAY + i * LINE_STAGGER)}
                 >
                   {line.word}
-                </span>
+                </span>{" "}
               </span>
             ))}
           </h1>
