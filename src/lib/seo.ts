@@ -3,7 +3,7 @@
 // so crawlers and link previews see the right title without running JS.
 // Keep this file free of browser APIs.
 
-import { site } from "../config/site.ts";
+import { nav, site } from "../config/site.ts";
 import { faq } from "../content/faq.ts";
 import { pages, type PageKey, type PageMeta } from "../content/seo.ts";
 
@@ -53,6 +53,45 @@ export function faqJsonLd() {
   };
 }
 
+/** The site itself, published by the business above. */
+export function websiteJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    name: site.name,
+    url: `${site.url}/`,
+    inLanguage: "en-IN",
+    publisher: { "@id": `${site.url}/#business` },
+  };
+}
+
+/** Mirrors the visible "Home / Page" breadcrumb on inner pages. */
+export function breadcrumbJsonLd(key: PageKey) {
+  const page = pages[key];
+  const label = nav.find((item) => item.to === page.path)?.label;
+  if (page.path === "/" || page.noindex || !label) return null;
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+      { "@type": "ListItem", position: 2, name: label, item: absoluteUrl(page.path) },
+    ],
+  };
+}
+
+/** Every JSON-LD block for a page, keyed by the id of its <script>. */
+export function structuredData(key: PageKey): { id: string; data: unknown }[] {
+  const page = pages[key];
+  const blocks: { id: string; data: unknown }[] = [{ id: "ld-business", data: localBusinessJsonLd() }];
+  if (key === "home") blocks.push({ id: "ld-website", data: websiteJsonLd() });
+  const breadcrumb = breadcrumbJsonLd(key);
+  if (breadcrumb) blocks.push({ id: "ld-breadcrumb", data: breadcrumb });
+  if (page.faq) blocks.push({ id: "ld-faq", data: faqJsonLd() });
+  return blocks;
+}
+
 const escapeHtml = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
@@ -82,9 +121,8 @@ export function renderHead(key: PageKey): string {
     `<meta name="twitter:title" content="${escapeHtml(page.title)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(page.description)}" />`,
     `<meta name="twitter:image" content="${og}" />`,
-    jsonScript("ld-business", localBusinessJsonLd()),
+    ...structuredData(key).map((block) => jsonScript(block.id, block.data)),
   ];
-  if (page.faq) tags.push(jsonScript("ld-faq", faqJsonLd()));
   if (key === "home") {
     // On desktop the hero photo is the largest element above the fold (on
     // phones it sits below the headline, so it is not preloaded there).

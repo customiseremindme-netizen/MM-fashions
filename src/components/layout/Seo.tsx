@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { pages, type PageKey } from "@/content/seo";
-import { absoluteUrl, faqJsonLd } from "@/lib/seo";
+import { absoluteUrl, structuredData } from "@/lib/seo";
 
 function setMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`);
@@ -13,7 +13,7 @@ function setMeta(attr: "name" | "property", key: string, content: string) {
 }
 
 /**
- * Keeps title, description, canonical, Open Graph and FAQ structured data in
+ * Keeps title, description, canonical, Open Graph and structured data in
  * step with the current route. The build writes the same tags into each
  * route's HTML, so crawlers get them without JavaScript.
  */
@@ -44,15 +44,22 @@ export function Seo({ page }: { page: PageKey }) {
       canonical.href = url;
     }
 
-    const faqScript = document.getElementById("ld-faq");
-    if (meta.faq && !faqScript) {
-      const script = document.createElement("script");
-      script.type = "application/ld+json";
-      script.id = "ld-faq";
-      script.textContent = JSON.stringify(faqJsonLd());
-      document.head.appendChild(script);
-    } else if (!meta.faq && faqScript) {
-      faqScript.remove();
+    // Structured data: keep the blocks this page needs, drop the rest.
+    const blocks = structuredData(page);
+    const ids = new Set(blocks.map((block) => block.id));
+    document.head.querySelectorAll<HTMLScriptElement>('script[type="application/ld+json"][id^="ld-"]').forEach((el) => {
+      if (!ids.has(el.id)) el.remove();
+    });
+    for (const block of blocks) {
+      let script = document.getElementById(block.id);
+      if (!script) {
+        script = document.createElement("script");
+        script.setAttribute("type", "application/ld+json");
+        script.id = block.id;
+        document.head.appendChild(script);
+      }
+      const json = JSON.stringify(block.data);
+      if (script.textContent !== json) script.textContent = json;
     }
   }, [page]);
 

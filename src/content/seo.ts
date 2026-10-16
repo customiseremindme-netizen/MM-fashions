@@ -14,19 +14,20 @@ export const pages: Record<PageKey, PageMeta> = {
     path: "/",
     title: "M.M Fashions | School, Sports & House Uniform Manufacturers in Tirupur",
     description:
-      "Custom school, house, sports and corporate uniforms made in Tirupur. Browse 250+ models and get a quote on WhatsApp.",
+      "School, house, sports and corporate uniforms made in Tirupur, Tamil Nadu. Browse 250+ models across 12 ranges and get a quote on WhatsApp.",
     faq: true,
   },
   about: {
     path: "/about",
     title: "About M.M Fashions | Uniform Manufacturer, Tirupur",
     description:
-      "Uniforms and sportswear made in Tirupur, the textile hub of India, for schools, corporates and sports institutions.",
+      "Uniforms and sportswear made in Tirupur, the textile hub of India, for schools, corporates and sports institutions, with in-house embroidery and printing.",
   },
   collections: {
     path: "/collections",
     title: "Uniform Collections | Kindergarten, Boys, Girls & Sublimation | M.M Fashions",
-    description: "Four collections and twelve ranges, designed for every age, activity and occasion.",
+    description:
+      "Kindergarten, boys, girls and sublimation-printed uniforms from Tirupur. Four collections and twelve ranges, designed for every age, activity and occasion.",
   },
   catalogue: {
     path: "/catalogue",
@@ -38,13 +39,13 @@ export const pages: Record<PageKey, PageMeta> = {
     path: "/fabrics",
     title: "Uniform Fabrics & Customisation | M.M Fashions",
     description:
-      "The right fabric makes a uniform comfortable, durable and easy to care for. Here's what we work with.",
+      "Uniform fabrics we work with, from Honey Comb, Lacoste and Polycotton to Lycra and Loopknit, plus logo embroidery, screen, digital and sublimation printing.",
   },
   contact: {
     path: "/contact",
     title: "Contact M.M Fashions, Tirupur | Get a Uniform Quote",
     description:
-      "Tell us what you need — school, house, sports or corporate uniforms. We reply with fabric options, customisation and pricing.",
+      "Contact M.M Fashions, Tirupur, for school, house, sports or corporate uniforms. Call or WhatsApp us; we reply with fabric options, customisation and pricing.",
     faq: true,
   },
   notFound: {

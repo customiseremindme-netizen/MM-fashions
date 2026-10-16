@@ -5,6 +5,7 @@ import { prerenderToNodeStream } from "react-dom/static";
 import { StaticRouter } from "react-router";
 import { AppProviders, AppRoutes } from "./App";
 
+export { renderLlmsTxt } from "./lib/llms";
 export { renderHead, routePages } from "./lib/seo";
 
 export async function render(url: string): Promise<string> {
