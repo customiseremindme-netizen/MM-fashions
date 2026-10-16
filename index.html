@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#1C1F26" />
     <meta name="format-detection" content="telephone=no" />
-    <!-- Theme before first paint: the saved choice, else the system setting. -->
+    <!-- Before first paint: the theme (saved choice, else the system setting). -->
     <script>
       (function () {
         var t;
@@ -15,6 +15,10 @@
         d.setAttribute("data-theme", t);
         d.style.colorScheme = t;
         if (t === "dark") document.querySelector('meta[name="theme-color"]').setAttribute("content", "#0B0C0F");
+        // A catalogue link with ?range= or ?q= shows the loading grid rather
+        // than the prerendered (unfiltered) first cards until the page is ready.
+        if (/^\/catalogue\/?$/.test(location.pathname) && /[?&](range|q)=[^&]/.test(location.search))
+          d.setAttribute("data-catalogue-filtered", "");
       })();
     </script>
     <!-- Google Search shows favicons that are a multiple of 48px square. -->

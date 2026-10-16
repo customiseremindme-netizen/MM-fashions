@@ -15,7 +15,7 @@ export type CollectionFeature = {
 export const collectionsPage = {
   hero: {
     crumb: "Collections",
-    title: "Collections",
+    title: "Uniform collections",
     intro: "Four collections and twelve ranges, designed for every age, activity and occasion.",
   },
 

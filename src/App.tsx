@@ -1,8 +1,9 @@
 import { domAnimation, LazyMotion, MotionConfig } from "framer-motion";
-import { lazy, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { RootLayout } from "@/components/layout/RootLayout";
 import { ShortlistProvider } from "@/hooks/useShortlist";
+import { lazyWithPreload } from "@/lib/lazyWithPreload";
 import HomePage, { loadHomeSections } from "@/pages/Home";
 
 // Home ships in the main bundle; the other pages are separate chunks. Each
@@ -17,15 +18,31 @@ export const pageLoaders = {
   homeSections: loadHomeSections,
 };
 
-const AboutPage = lazy(pageLoaders.about);
-const CollectionsPage = lazy(pageLoaders.collections);
-const CataloguePage = lazy(pageLoaders.catalogue);
-const FabricsPage = lazy(pageLoaders.fabrics);
-const ContactPage = lazy(pageLoaders.contact);
-const NotFoundPage = lazy(pageLoaders.notFound);
+const AboutPage = lazyWithPreload(pageLoaders.about);
+const CollectionsPage = lazyWithPreload(pageLoaders.collections);
+const CataloguePage = lazyWithPreload(pageLoaders.catalogue);
+const FabricsPage = lazyWithPreload(pageLoaders.fabrics);
+const ContactPage = lazyWithPreload(pageLoaders.contact);
+const NotFoundPage = lazyWithPreload(pageLoaders.notFound);
 
 /** Paths with their own page; anything else renders the 404 page. */
 export const knownPaths = ["/", "/about", "/collections", "/catalogue", "/fabrics", "/contact"];
+
+// Home is in the main bundle; its below-the-fold sections keep hydrating on
+// their own, after the hero, so they are not preloaded here.
+const preloaders: Record<string, () => Promise<unknown>> = {
+  "/": () => Promise.resolve(),
+  "/about": AboutPage.preload,
+  "/collections": CollectionsPage.preload,
+  "/catalogue": CataloguePage.preload,
+  "/fabrics": FabricsPage.preload,
+  "/contact": ContactPage.preload,
+};
+
+/** Loads the code for a path's page, so it can hydrate without suspending. */
+export function preloadPage(path: string): Promise<unknown> {
+  return (preloaders[path] ?? NotFoundPage.preload)();
+}
 
 export function AppProviders({ children }: { children: ReactNode }) {
   return (

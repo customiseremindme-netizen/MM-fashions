@@ -15,16 +15,18 @@ type ModelCardProps = {
   /** Stagger delay for the fade-in, in seconds. */
   delay: number;
   eager?: boolean;
+  /** False for the cards in the prerendered HTML, which are already on screen. */
+  animateIn?: boolean;
 };
 
-export const ModelCard = memo(function ModelCard({ model, selected, onToggle, onOpen, delay, eager }: ModelCardProps) {
+export const ModelCard = memo(function ModelCard({ model, selected, onToggle, onOpen, delay, eager, animateIn = true }: ModelCardProps) {
   const reduce = useReducedMotion();
   const [touched, setTouched] = useState(false);
   const rangeName = getRangeName(model.range);
 
   return (
     <m.li
-      initial={reduce ? false : { opacity: 0, y: 16 }}
+      initial={reduce || !animateIn ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease, delay }}
       className="list-none"

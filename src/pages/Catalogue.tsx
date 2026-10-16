@@ -19,8 +19,9 @@ const STAGGER = 0.035;
 
 export default function CataloguePage() {
   const [params, setParams] = useSearchParams();
-  // The prerendered page is the unfiltered catalogue; ?range= and ?q= apply
-  // once the page has hydrated, so server and client markup always match.
+  // The prerendered page is the unfiltered catalogue (its first cards are in
+  // the HTML); ?range= and ?q= apply once the page has hydrated, so server and
+  // client markup always match.
   const hydrated = useHydrated();
   const rangeParam = params.get("range");
   const range: RangeSlug | null = hydrated && isRangeSlug(rangeParam) ? rangeParam : null;
@@ -76,10 +77,17 @@ export default function CataloguePage() {
   const pageSize = useIsTabletUp() ? 30 : 12;
   const [visible, setVisible] = useState(pageSize);
   const previousVisible = useRef(0);
+  const lastFilter = useRef<string | null>(null);
+  const filter = `${range ?? ""}|${query}`;
   useEffect(() => {
+    // A new filter starts the grid's entry animation from the first card. If
+    // only the page size changed (the prerendered 12 growing to 30 on wider
+    // screens, or a resize), the cards already on screen stay put.
+    // (`visible` is read, not a dependency: "Show more" must not re-run this.)
+    previousVisible.current = lastFilter.current === filter ? Math.min(visible, results.length) : 0;
+    lastFilter.current = filter;
     setVisible(pageSize);
-    previousVisible.current = 0;
-  }, [range, query, pageSize]);
+  }, [filter, pageSize]);
 
   const shown = results.slice(0, visible);
   const showMore = () => {
@@ -130,9 +138,8 @@ export default function CataloguePage() {
             <p className="text-sm text-muted">{catalogue.hint}</p>
           </div>
 
-          {!hydrated ? (
-            <GridSkeleton count={pageSize} />
-          ) : results.length === 0 ? (
+          {!hydrated && <GridSkeleton count={pageSize} />}
+          {results.length === 0 ? (
             <div className="flex flex-col items-center rounded-card border border-dashed border-fg/15 bg-surface px-6 py-16 text-center">
               <span className="grid size-14 place-items-center rounded-full bg-chalk text-muted">
                 <SearchX className="size-6" aria-hidden />
@@ -152,6 +159,7 @@ export default function CataloguePage() {
           ) : (
             <ul
               key={range ?? "all"}
+              data-ssr-grid={hydrated ? undefined : ""}
               className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(176px,1fr))]"
             >
               {shown.map((model, i) => (
@@ -161,7 +169,10 @@ export default function CataloguePage() {
                   selected={has(model.no)}
                   onToggle={toggle}
                   onOpen={onOpen}
-                  eager={i < 6}
+                  // Lazy in the prerendered HTML so the cards don't compete with
+                  // the first paint; the first six switch to eager once hydrated.
+                  eager={hydrated && i < 6}
+                  animateIn={hydrated}
                   delay={Math.min(Math.max(0, i - previousVisible.current) * STAGGER, 1.2)}
                 />
               ))}
@@ -201,10 +212,14 @@ export default function CataloguePage() {
   );
 }
 
-/** Same footprint as the real cards, shown in the prerendered HTML until the grid hydrates. */
+/**
+ * Same footprint as the real cards. Part of the prerendered HTML but hidden,
+ * unless the link carries ?range= or ?q= (see index.html and index.css), so
+ * those visitors never see the unfiltered cards before the filter applies.
+ */
 function GridSkeleton({ count }: { count: number }) {
   return (
-    <ul aria-hidden className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(176px,1fr))]">
+    <ul aria-hidden data-ssr-skeleton="" className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-[repeat(auto-fill,minmax(176px,1fr))]">
       {Array.from({ length: count }, (_, i) => (
         <li key={i} className="flex flex-col rounded-card border border-line bg-surface">
           <span className="m-[10px] block aspect-square rounded-xl bg-chalk" />

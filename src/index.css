@@ -461,3 +461,15 @@ html.has-custom-cursor textarea {
 body {
   padding-bottom: var(--shortlist-offset, 0px);
 }
+
+/* Catalogue before hydration: the prerendered first cards, or the loading grid
+   when the link carries ?range= or ?q= (flagged by the script in index.html). */
+[data-ssr-skeleton] {
+  display: none;
+}
+[data-catalogue-filtered] [data-ssr-grid] {
+  display: none;
+}
+[data-catalogue-filtered] [data-ssr-skeleton] {
+  display: grid;
+}

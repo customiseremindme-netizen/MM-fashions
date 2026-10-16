@@ -24,12 +24,20 @@ export function Intro() {
               </p>
             ))}
           </div>
-          <Button asChild variant="outline" className="mt-9">
-            <Link to={intro.cta.to}>
-              {intro.cta.label}
-              <Arrow />
-            </Link>
-          </Button>
+          <div className="mt-9 flex flex-wrap gap-3">
+            <Button asChild variant="outline">
+              <Link to={intro.cta.to}>
+                {intro.cta.label}
+                <Arrow />
+              </Link>
+            </Button>
+            <Button asChild variant="outline">
+              <Link to={intro.contact.to}>
+                {intro.contact.label}
+                <Arrow />
+              </Link>
+            </Button>
+          </div>
         </Reveal>
 
         <div>

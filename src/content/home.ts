@@ -33,6 +33,7 @@ export const home = {
       "We make school uniforms, corporate wear, sportswear, T-shirts, track pants, hoodies and promotional apparel for schools, corporates and sports institutions across Tamil Nadu and South India.",
     ],
     cta: { label: "About us", to: "/about" },
+    contact: { label: "Contact us", to: "/contact" },
   },
 
   collections: {

@@ -29,7 +29,7 @@
     },
     {
       "source": "/(.*)",
-      "missing": [{ "type": "host", "value": "www.mmfashions.in" }],
+      "has": [{ "type": "host", "value": ".*\\.vercel\\.app" }],
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex" }]
     }
   ]

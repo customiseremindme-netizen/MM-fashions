@@ -73,7 +73,7 @@ The supplied files are used as-is. `npm run images` (sharp) writes WebP copies n
 - `sitemap.xml` (each page with its images; `<lastmod>` is the date of the last commit that changed that page's content, and is left out when git history isn't available), `robots.txt`, and `llms.txt` (a plain-text summary for AI assistants, built from the same content);
 - `_headers` (Netlify, Cloudflare Pages) and `.htaccess` (Apache/LiteSpeed shared hosting) for caching and 404 handling.
 
-**Vercel:** `vercel.json` sets everything (Vite framework, `npm ci`, `npm run build`, output directory `dist`, clean URLs, caching headers, and `X-Robots-Tag: noindex` on every host other than `www.mmfashions.in`, so `*.vercel.app` and preview URLs stay out of search results), so the project's own framework preset and output-directory settings are overridden and nothing needs changing in the dashboard.
+**Vercel:** `vercel.json` sets everything (Vite framework, `npm ci`, `npm run build`, output directory `dist`, clean URLs, caching headers, and `X-Robots-Tag: noindex` on `*.vercel.app` hosts only, so deployment and preview URLs stay out of search results while the live domain can never be matched), so the project's own framework preset and output-directory settings are overridden and nothing needs changing in the dashboard.
 
 Upload `dist/` to any static host. Serve unknown paths with `404.html` (most hosts do this automatically); do not configure an "SPA fallback" that rewrites every path to `index.html` — it still works, but each page then renders in the browser instead of using its prerendered HTML.
 
